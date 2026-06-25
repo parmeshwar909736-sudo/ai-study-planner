@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>AI Study Planner</title>
+
+<style>
+body{
+    font-family: Arial;
+    background:#f4f4f4;
+    text-align:center;
+    margin-top:50px;
+}
+
+.container{
+    width:60%;
+    margin:auto;
+    background:white;
+    padding:20px;
+    border-radius:10px;
+    box-shadow:0 0 10px gray;
+}
+
+input{
+    width:80%;
+    padding:10px;
+    margin:10px;
+}
+
+button{
+    padding:10px 20px;
+    font-size:18px;
+}
+
+li{
+    font-size:20px;
+}
+</style>
+
+</head>
+<body>
+
+<div class="container">
+
+<h1>AI Study Planner</h1>
+
+<form method="POST">
+
+<input type="number"
+name="days"
+placeholder="Exam kitne din baad hai">
+
+<br>
+
+<input type="number"
+name="hours"
+placeholder="Roz kitne ghante padhoge">
+
+<br>
+
+<input type="text"
+name="subjects"
+placeholder="Math, Physics, Chemistry">
+
+<br><br>
+
+<button type="submit">
+Generate Plan
+</button>
+
+</form>
+
+<ul>
+{% for item in result %}
+<li>{{ item }}</li>
+{% endfor %}
+</ul>
+
+</div>
+
+</body>
+</html>

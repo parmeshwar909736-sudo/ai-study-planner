@@ -2,78 +2,76 @@
 <html>
 <head>
 <title>AI Study Planner</title>
-
-<style>
-body{
-    font-family: Arial;
-    background:#f4f4f4;
-    text-align:center;
-    margin-top:50px;
-}
-
-.container{
-    width:60%;
-    margin:auto;
-    background:white;
-    padding:20px;
-    border-radius:10px;
-    box-shadow:0 0 10px gray;
-}
-
-input{
-    width:80%;
-    padding:10px;
-    margin:10px;
-}
-
-button{
-    padding:10px 20px;
-    font-size:18px;
-}
-
-li{
-    font-size:20px;
-}
-</style>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 
 </head>
 <body>
 
 <div class="container">
 
-<h1>AI Study Planner</h1>
+<h1>🎓 AI Smart Study Planner | by parmeshwar</h1>
+<p style="color:#666; font-size:16px; margin-bottom:20px;">
+Create a personalized study plan and stay on track for your exams.
+</p>
 
 <form method="POST">
 
+<h3>📅 Days Until Exam</h3>
 <input type="number"
 name="days"
-placeholder="Days Until Exam">
+placeholder="Number of Days Until Exam">
 
 <br>
 
+<h3>⏰ Study Hours Per Day</h3>
 <input type="number"
 name="hours"
 placeholder="study hours per day">
 
 <br>
 
+<h3>📚 Subjects</h3>
 <input type="text"
 name="subjects"
-placeholder="hindi, english, Math, Physics, Chemistry">
+placeholder="Exam: hindi, english, Math, Physics, Chemistry">
 
 <br><br>
 
 <button type="submit">
-Generate Plan
+🚀 Generate Study Plan
 </button>
 
+<br><br>
+
+<button type="reset" style="background:#ff4d4d;">
+Reset
+</button>
 </form>
+
+{% if result %}
+
+<h2>📚 Your Study Plan</h2>
+<div style="background:#ddd; border-radius:10px; margin:15px 0;">
+    <div style="width:100%; background:#28a745; color:white; padding:8px; border-radius:10px;">
+        ✅ Study Plan Generated Successfully
+    </div>
+    </div>
 
 <ul>
 {% for item in result %}
-<li>{{ item }}</li>
+<li>✅ {{ item }}</li>
 {% endfor %}
 </ul>
+<p style="color:#28a745; font-size:18px; font-weight:bold; margin-top:20px;">
+🎯 Stay Consistent. Success Comes One Day at a Time!
+</p>
+
+{% endif %}
+<hr style="margin:25px 0;">
+
+<p style="color:#777; font-size:14px;">
+© 2026 AI Smart Study Planner | Developed by Parmeshwar , Dhiraj , prince , amit
+</p>
 
 </div>
 

@@ -8,18 +8,17 @@ def home():
     result = []
 
     if request.method == "POST":
-        exam_days = int(request.form["days"])
-        hours = int(request.form["hours"])
-        subjects = request.form["subjects"]
+        exam_days = int(request.form.get("days", 0))
+        hours = int(request.form.get("hours", 0))
+        subjects = request.form.get("subjects", "")
 
-        subject_list = subjects.split(",")
+        subject_list = [s.strip() for s in subjects.split(",") if s.strip()]
 
-        time_per_subject = round(hours / len(subject_list), 1)
+        if len(subject_list) > 0 and hours > 0:
+            time_per_subject = round(hours / len(subject_list), 1)
 
-        for subject in subject_list:
-            result.append(
-                f"{subject.strip()} : {time_per_subject} hours/day"
-            )
+            for subject in subject_list:
+                result.append(f"{subject} : {time_per_subject} hours/day")
 
     return render_template("index.html", result=result)
 
